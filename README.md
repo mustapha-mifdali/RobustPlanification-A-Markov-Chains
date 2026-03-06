@@ -14,10 +14,9 @@
 | **Encadrant** | Pr. Mohammed MESTARI |
 | **Année universitaire** | 2025–2026 |
 
-## 👥 Auteurs
+## 👥 Auteur
 
 - **Mustapha Elmifdali**
-- **Mbarek Etalebi**
 
 ---
 
@@ -61,7 +60,7 @@ Ce projet combine deux techniques complémentaires pour la **planification robus
 ## 2. Installation & Démarrage rapide
 
 ```bash
-pip install matplotlib numpy
+pip install matplotlib numpy jupyterlab   
 ```
 
 ```bash
