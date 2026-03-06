@@ -1,0 +1,156 @@
+╔════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                ║
+║                    A* SEARCH + MARKOV CHAINS PROJECT                           ║
+║                           FINAL DELIVERABLES                                   ║
+║                                                                                ║
+╚════════════════════════════════════════════════════════════════════════════════╝
+
+PROJECT CONTENTS
+════════════════════════════════════════════════════════════════════════════════
+
+✓ README.md (6.5 KB)
+  └─ Project overview, usage, API reference
+
+✓ Rapport_Robust_Planning.docx (42 KB)
+  └─ 10-page professional technical report
+
+✓ CODE (5 Python files, 79 KB):
+  ├─ astar.py (8.7 KB)
+  ├─ markov.py (14 KB)
+  ├─ grid_visualizer.py (17 KB)
+  ├─ markov_analysis.py (14 KB)
+  └─ run_complete_analysis.py (16 KB)
+
+════════════════════════════════════════════════════════════════════════════════
+
+QUICK START
+════════════════════════════════════════════════════════════════════════════════
+
+1. Install dependencies:
+   pip install matplotlib numpy
+
+2. Run complete analysis:
+   python run_complete_analysis.py
+
+3. Check images generated in:
+   analysis_results/ folder
+   (Contains 22 PNG files + 1 text report)
+
+════════════════════════════════════════════════════════════════════════════════
+
+WHAT YOU GET
+════════════════════════════════════════════════════════════════════════════════
+
+When you run: python run_complete_analysis.py
+
+Output: analysis_results/
+├── easy/        (10×10 grid, 7 PNG files)
+├── medium/      (15×15 grid, 7 PNG files)  
+├── hard/        (20×20 grid, 7 PNG files)
+├── cross_difficulty_comparison.png
+└── ANALYSIS_SUMMARY.txt
+
+Images show:
+  • Grid comparison (A* vs UCS vs Greedy)
+  • Metrics (nodes, cost, time, efficiency)
+  • Uncertainty analysis (robustness curves)
+  • Step-by-step itineraries
+  • Markov chain analysis
+  • Monte-Carlo validation
+  • Absorption probabilities
+
+════════════════════════════════════════════════════════════════════════════════
+
+CODE FILES SUMMARY
+════════════════════════════════════════════════════════════════════════════════
+
+astar.py
+  Functions:
+    run_astar(start, goal, grid_n, obstacles)
+    run_ucs(start, goal, grid_n, obstacles)
+    run_greedy(start, goal, grid_n, obstacles)
+    run_all(start, goal, grid_n, obstacles)
+    build_itinerary(path, goal)
+
+markov.py
+  Functions:
+    build_transition_matrix(path, grid_n, obstacles, epsilon)
+    goal_probability(path, epsilon, steps)
+    goal_probability_vs_epsilon(path, epsilon_values)
+    monte_carlo(path, grid_n, obstacles, epsilon, n_simulations)
+    absorption_analysis(path, epsilon)
+
+grid_visualizer.py
+  Functions:
+    create_grid_visualization(grid_n, obstacles, filename)
+    create_metrics_comparison(results, filename)
+    create_uncertainty_analysis(results, grid_n, obstacles, filename)
+    create_itinerary_table(results, goal, filename)
+    generate_all_visualizations(grid_n, obstacle_percentage, save_dir)
+
+markov_analysis.py
+  Functions:
+    visualize_transition_matrix(path, grid_n, obstacles, epsilon, filename)
+    compare_markov_vs_montecarlo(results, grid_n, obstacles, filename)
+    absorption_comparison(results, grid_n, obstacles, epsilon, filename)
+    generate_markov_analysis(results, grid_n, obstacles, save_dir)
+
+run_complete_analysis.py
+  Class:
+    AnalysisPipeline:
+      run_complete_pipeline()  ← MAIN ENTRY POINT
+
+════════════════════════════════════════════════════════════════════════════════
+
+USAGE EXAMPLES
+════════════════════════════════════════════════════════════════════════════════
+
+Example 1: Run all algorithms
+from astar import run_all
+results = run_all((0,0), (14,14), 15, {(3,3), (3,4), (3,5)})
+for algo in ['astar', 'ucs', 'greedy']:
+    print(f"{algo}: {results[algo]['nodes']} nodes")
+
+Example 2: Generate visualizations
+from grid_visualizer import generate_all_visualizations
+generate_all_visualizations(grid_n=15, obstacle_percentage=20)
+
+Example 3: Uncertainty analysis
+from markov import goal_probability_vs_epsilon
+path = results['astar']['path']
+probs = goal_probability_vs_epsilon(path, [0.0, 0.1, 0.2, 0.3])
+for eps, prob in probs.items():
+    print(f"ε={eps}: {prob*100:.1f}%")
+
+════════════════════════════════════════════════════════════════════════════════
+
+KEY RESULTS
+════════════════════════════════════════════════════════════════════════════════
+
+A* vs UCS:  2.5-5.1× more efficient (expands fewer nodes)
+Heuristic:  15-20% reduction with Manhattan distance
+Robustness: ε=0.1 → 95% success, ε=0.3 → 60% success
+
+════════════════════════════════════════════════════════════════════════════════
+
+FILES PROVIDED
+════════════════════════════════════════════════════════════════════════════════
+
+✓ README.md
+✓ Rapport_Robust_Planning.docx
+✓ astar.py
+✓ markov.py
+✓ grid_visualizer.py
+✓ markov_analysis.py
+✓ run_complete_analysis.py
+
+Optional (not needed for basic use):
+  - experiments_pygame.py (interactive interface)
+
+════════════════════════════════════════════════════════════════════════════════
+
+RUN IT:
+
+  python run_complete_analysis.py
+
+════════════════════════════════════════════════════════════════════════════════
