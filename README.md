@@ -88,7 +88,6 @@ jupyter notebook Robust_Planning_Notebook_FR.ipynb
 ├── markov_analysis.py                     # Analyse avancée Markov
 ├── run_complete_analysis.py               # Pipeline complet ← POINT D'ENTRÉE
 ├── Robust_Planning_Notebook_FR.ipynb      # Notebook reproductible (français)
-├── Rapport_Planification_Robuste_FR.docx  # Rapport technique (10 pages)
 ├── README.md                              # Ce fichier
 │
 ├── 📁 resultats_analyse/                  # ← généré par run_complete_analysis.py
@@ -506,8 +505,7 @@ class PipelineAnalyse:
 <div align="center">
 
 **Lancer l'analyse complète :** `python run_complete_analysis.py`  
-**Notebook interactif :** `jupyter notebook Robust_Planning_Notebook_FR.ipynb`  
-**Rapport complet :** `Rapport_Planification_Robuste_FR.docx`
+**Notebook interactif :** `jupyter notebook Robust_Planning_Notebook_FR.ipynb` 
 
 ---
 
